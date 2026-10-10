@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plano de Lançamento Relâmpago • Starter Mythos (R$ 3.000,00)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #050507;
+      --bg-card: rgba(18, 18, 24, 0.75);
+      --bg-card-hover: rgba(28, 28, 38, 0.9);
+      --border-card: rgba(255, 199, 0, 0.15);
+      --border-active: #FFC700;
+      --gold: #FFC700;
+      --gold-glow: rgba(255, 199, 0, 0.35);
+      --text-main: #FFFFFF;
+      --text-muted: #A1A1AA;
+      --text-dim: #71717A;
+      --green: #10B981;
+      --red: #EF4444;
+      --blue: #3B82F6;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.6;
+      background-image: 
+        radial-gradient(circle at 15% 10%, rgba(255, 199, 0, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 85% 60%, rgba(59, 130, 246, 0.05) 0%, transparent 40%);
+      background-attachment: fixed;
+      padding-bottom: 80px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 20px;
+    }
+
+    /* Top Badge */
+    .top-badge-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .top-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 18px;
+      border-radius: 9999px;
+      background: rgba(255, 199, 0, 0.1);
+      border: 1px solid rgba(255, 199, 0, 0.3);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .top-badge .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--red);
+      box-shadow: 0 0 10px var(--red);
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    /* Hero Header */
+    .hero {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero h1 span.gold {
+      color: var(--gold);
+      text-shadow: 0 0 25px var(--gold-glow);
+    }
+
+    .hero p.lead {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 780px;
+      margin: 0 auto 28px;
+    }
+
+    /* Price Anchor Card */
+    .price-banner {
+      display: inline-flex;
+      align-items: center;
+      gap: 24px;
+      background: linear-gradient(135deg, rgba(255, 199, 0, 0.12), rgba(255, 199, 0, 0.02));
+      border: 1px solid rgba(255, 199, 0, 0.4);
+      padding: 16px 32px;
+      border-radius: 20px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      margin-bottom: 20px;
+    }
+
+    .price-label {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      font-weight: 600;
+      text-align: left;
+    }
+
+    .price-value {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--gold);
+      text-shadow: 0 0 15px var(--gold-glow);
+    }
+
+    .price-tag {
+      background: rgba(16, 185, 129, 0.2);
+      border: 1px solid var(--green);
+      color: var(--green);
+      padding: 4px 12px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    /* Section Styles */
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #FFF;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 12px;
+    }
+
+    .section-title span.num {
+      background: var(--gold);
+      color: #000;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      font-weight: 800;
+    }
+
+    /* Grid Layouts */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 16px;
+      padding: 24px;
+      backdrop-filter: blur(16px);
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      border-color: var(--gold);
+      background: var(--bg-card-hover);
+      transform: translateY(-2px);
+    }
+
+    .card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #FFF;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+    }
+
+    /* Role Badges */
+    .role-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .badge-gimael { background: rgba(59, 130, 246, 0.2); color: #60A5FA; border: 1px solid #3B82F6; }
+    .badge-gustavo { background: rgba(16, 185, 129, 0.2); color: #34D399; border: 1px solid #10B981; }
+    .badge-luciano { background: rgba(255, 199, 0, 0.2); color: #FCD34D; border: 1px solid #F59E0B; }
+
+    /* Timeline Day by Day */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: border 0.2s;
+    }
+
+    .timeline-item:hover {
+      border-color: var(--gold);
+    }
+
+    .timeline-date {
+      background: rgba(255, 199, 0, 0.06);
+      border-right: 1px solid rgba(255, 199, 0, 0.15);
+      padding: 20px 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .timeline-date .day {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--gold);
+    }
+
+    .timeline-date .weekday {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      font-weight: 700;
+    }
+
+    .timeline-content {
+      padding: 20px 24px;
+    }
+
+    .timeline-phase {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+    .phase-setup { background: rgba(113, 113, 122, 0.2); color: #A1A1AA; }
+    .phase-captacao { background: rgba(59, 130, 246, 0.2); color: #60A5FA; }
+    .phase-aquecimento { background: rgba(245, 158, 11, 0.2); color: #FBBF24; }
+    .phase-vendas { background: rgba(16, 185, 129, 0.2); color: #34D399; }
+    .phase-fechamento { background: rgba(239, 68, 68, 0.2); color: #F87171; }
+
+    .timeline-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #FFF;
+      margin-bottom: 6px;
+    }
+
+    .timeline-desc {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    /* Feedback Form Box */
+    .feedback-box {
+      background: linear-gradient(145deg, rgba(20, 20, 28, 0.95), rgba(12, 12, 16, 0.95));
+      border: 2px solid var(--gold);
+      box-shadow: 0 0 35px rgba(255, 199, 0, 0.15);
+      border-radius: 20px;
+      padding: 36px 32px;
+      margin-top: 40px;
+    }
+
+    .feedback-header {
+      margin-bottom: 24px;
+    }
+
+    .feedback-header h2 {
+      font-size: 1.8rem;
+      color: var(--gold);
+      font-weight: 800;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .feedback-header p {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+    }
+
+    .mentor-selector {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .mentor-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 12px;
+      padding: 14px 10px;
+      color: #FFF;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s;
+    }
+
+    .mentor-btn:hover {
+      background: rgba(255, 199, 0, 0.1);
+      border-color: var(--gold);
+    }
+
+    .mentor-btn.active {
+      background: var(--gold);
+      color: #000;
+      border-color: var(--gold);
+      box-shadow: 0 0 15px var(--gold-glow);
+    }
+
+    .form-group {
+      margin-bottom: 22px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #FFF;
+      margin-bottom: 8px;
+    }
+
+    .form-group label span.hint {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 400;
+      color: var(--text-dim);
+      margin-top: 2px;
+    }
+
+    .form-control {
+      width: 100%;
+      background: rgba(5, 5, 8, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      padding: 14px;
+      color: #FFF;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border 0.2s;
+      resize: vertical;
+      min-height: 90px;
+    }
+
+    .form-control:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 10px rgba(255, 199, 0, 0.2);
+    }
+
+    .save-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--green);
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    .actions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 24px;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 800;
+      cursor: pointer;
+      text-decoration: none;
+      border: none;
+      transition: all 0.2s;
+    }
+
+    .btn-whatsapp {
+      background: #25D366;
+      color: #000;
+      box-shadow: 0 0 20px rgba(37, 211, 102, 0.3);
+    }
+
+    .btn-whatsapp:hover {
+      background: #1EBE5D;
+      transform: translateY(-2px);
+    }
+
+    .btn-copy {
+      background: rgba(255, 199, 0, 0.15);
+      border: 1px solid var(--gold);
+      color: var(--gold);
+    }
+
+    .btn-copy:hover {
+      background: var(--gold);
+      color: #000;
+    }
+
+    /* Modal / Toast */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #10B981;
+      color: #000;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      display: none;
+      z-index: 1000;
+    }
+
+    @media (max-width: 768px) {
+      .timeline-item {
+        grid-template-columns: 1fr;
+      }
+      .timeline-date {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 199, 0, 0.15);
+        padding: 12px;
+      }
+      .mentor-selector {
+        grid-template-columns: 1fr;
+      }
+      .price-banner {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- Top Badge -->
+    <div class="top-badge-container">
+      <div class="top-badge">
+        <span class="dot"></span>
+        Sprint Crítico • 08/10 a 16/10 (8 Dias)
+      </div>
+    </div>
+
+    <!-- Hero Header -->
+    <div class="hero">
+      <h1>Lançamento Relâmpago <br><span class="gold">STARTER MYTHOS</span></h1>
+      <p class="lead">
+        A mentoria em grupo que antecede e prepara o publisher para o Master Mythos. 
+        Zero investimento externo em anúncios: migração 100% orgânica da comunidade <strong>Kaizen News</strong> para o Grupo VIP de Fechamento.
+      </p>
+
+      <!-- Preço Âncora -->
+      <div class="price-banner">
+        <div>
+          <div class="price-label">Ticket Oficial do Produto</div>
+          <div class="price-value">R$ 3.000,00</div>
+        </div>
+        <div>
+          <span class="price-tag">Mentoria em Grupo Premium</span>
+          <div style="font-size: 0.8rem; color: #A1A1AA; margin-top: 4px;">Antecede o Master (Abatível na migração)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Seção 1: Por que o Starter Mythos Existe -->
+    <h2 class="section-title"><span class="num">1</span> O Modelo Estratégico: Starter vs. Master</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3>🌱 Starter Mythos (R$ 3.000,00)</h3>
+        <p><strong>Público:</strong> Publishers faturando entre R$ 2k e R$ 15k/mês ou travados na montanha-russa do breakeven.</p>
+        <p><strong>Formato:</strong> Mentoria e acompanhamento <strong>em grupo</strong>. Encontros ao vivo no Zoom com os 3 mentores, análise de tela coletiva e processos validados.</p>
+        <p><strong>Objetivo:</strong> Destravar o faturamento, alinhar tráfego + AdSense + retenção e gerar o caixa necessário para ascender ao Master.</p>
+      </div>
+      <div class="card" style="border-color: rgba(255,255,255,0.1);">
+        <h3>👑 Master Mythos (High-Ticket Anual)</h3>
+        <p><strong>Público:</strong> Grandes operações, publishers consolidados buscando múltiplos 6 dígitos e M&A.</p>
+        <p><strong>Formato:</strong> Acompanhamento anual, individualizado, suporte caso a caso direto na trincheira com os fundadores.</p>
+        <p><strong>Ponte de Ouro:</strong> O aluno que investe R$ 3.000,00 no Starter poderá abater 100% deste valor caso faça upgrade para o Master dentro do ciclo!</p>
+      </div>
+    </div>
+
+    <!-- Seção 2: Os 3 Mentores e Suas Responsabilidades -->
+    <h2 class="section-title"><span class="num">2</span> A Tríade de Especialistas na Mentoria</h2>
+    <div class="grid-3">
+      <div class="card">
+        <span class="role-badge badge-gimael">General da Performance</span>
+        <h3>Gimael Jr.</h3>
+        <p><strong>Foco na Mentoria:</strong> Tráfego de Alta Performance & Arbitragem.</p>
+        <p>Validação de criativos no Meta que escalam, estrutura de testes CBO vs. ABO, e tomada de decisão quando as métricas atrasam.</p>
+      </div>
+
+      <div class="card">
+        <span class="role-badge badge-gustavo">Patriarca da Solidez</span>
+        <h3>Gustavo Freitas</h3>
+        <p><strong>Foco na Mentoria:</strong> Monetização Sólida & Longevidade.</p>
+        <p>AdSense/GAM blindados, conformidade com políticas do Google, esteira de sites e estruturação que dura anos sem risco de perda de conta.</p>
+      </div>
+
+      <div class="card">
+        <span class="role-badge badge-luciano">Visão de Ecossistema</span>
+        <h3>Luciano Cokado</h3>
+        <p><strong>Foco na Mentoria:</strong> Retenção, LTV & Negócios.</p>
+        <p>Sair do papel de "lobo solitário", retenção via Web Push, automação, parcerias estratégicas e mentalidade de empresário da informação.</p>
+      </div>
+    </div>
+
+    <!-- Seção 3: Cronograma Visual dos 8 Dias (08/10 a 16/10) -->
+    <h2 class="section-title"><span class="num">3</span> O Cronograma dos 8 Dias (Dia a Dia Didático)</h2>
+    <div class="timeline">
+      
+      <!-- Dia 08 -->
+      <div class="timeline-item">
+        <div class="timeline-date">
+          <div class="day">08/10</div>
+          <div class="weekday">Quinta-feira</div>
+        </div>
+        <div class="timeline-content">
+          <span class="timeline-phase phase-setup">Fase 1 • Alinhamento & Setup</span>
+          <div class="timeline-title">Concepção & Registro das Mentes (Você está aqui)</div>
+          <div class="timeline-desc">
+            Apresentação desta página para Gustavo, Gimael e Luciano. Cada mentor preenche o formulário abaixo validando entregáveis e sugestões. Criação do Grupo VIP no WhatsApp e setup da página de checkout a R$ 3.000,00.
+          </div>
+        </div>
+      </div>
+
+      <!-- Dia 09 a 11 -->
+      <div class="timeline-item">
+        <div class="timeline-date">
+          <div class="day">09 a 11/10</div>
+          <div class="weekday">Sex • Sáb • Dom</div>
+        </div>
+        <div class="timeline-content">
+          <span class="timeline-phase phase-captacao">Fase 2 • Captação & Migração</span>
+          <div class="timeline-title">Movimentação no Kaizen News ➔ Convite para Grupo VIP</div>
+          <div class="timeline-desc">
+            Postagens diárias no grupo aberto do Kaizen News tocando nas feridas reais: o gargalo de operar sozinho, a sensação de montanha-russa e a falta de método em grupo. Convocação direta: <em>"Quem quer dar o próximo passo com os 3 mentores antes do Master, entre no Grupo VIP exclusivo."</em>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dia 12 a 14 -->
+      <div class="timeline-item">
+        <div class="timeline-date">
+          <div class="day">12 a 14/10</div>
+          <div class="weekday">Seg • Ter • Qua</div>
+        </div>
+        <div class="timeline-content">
+          <span class="timeline-phase phase-aquecimento">Fase 3 • Enquete & Descoberta do Assunto Quente</span>
+          <div class="timeline-title">Votação da Comunidade ➔ Criação da Aula Zero</div>
+          <div class="timeline-desc">
+            Disparo da Enquete Oficial no Grupo VIP para a turma votar no maior gargalo/tema de interesse. O tema mais votado vira o tema da <strong>Aula Zero do Starter Mythos</strong> na Live de Quinta-feira, mostrando domínio técnico, autoridade e quebrando qualquer objeção ao vivo.
+          </div>
+        </div>
+      </div>
+
+      <!-- Dia 15 -->
+      <div class="timeline-item">
+        <div class="timeline-date">
+          <div class="day">15/10</div>
+          <div class="weekday">Quinta-feira</div>
+        </div>
+        <div class="timeline-content">
+          <span class="timeline-phase phase-vendas">Fase 4 • Super Live de Lançamento (20h)</span>
+          <div class="timeline-title">Aula Zero Prática + Oferta Fundadora + Bônus Exclusivo da Live</div>
+          <div class="timeline-desc">
+            Transmissão ao vivo às 20h00. Entrega densa de valor prático no tema vencedor da enquete. Abertura das vagas da Turma Fundadora do Starter Mythos (R$ 3.000,00) com condição/bônus especial <strong>exclusivo apenas para quem estiver ao vivo na sala</strong>.
+          </div>
+        </div>
+      </div>
+
+      <!-- Dia 16 -->
+      <div class="timeline-item">
+        <div class="timeline-date">
+          <div class="day">16/10</div>
+          <div class="weekday">Sexta-feira</div>
+        </div>
+        <div class="timeline-content">
+          <span class="timeline-phase phase-fechamento">Fase 5 • Replay Liberado & Encerramento</span>
+          <div class="timeline-title">Liberação do Replay por 24h & Fechamento de Vagas às 23h59</div>
+          <div class="timeline-desc">
+            Disparo do link de replay no Grupo VIP e Kaizen News pela manhã. Escassez real: encerramento das inscrições da Turma Fundadora às 23h59 e fim dos benefícios de abertura.
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Seção 4: Formulário Interativo de Coleta dos Mentores -->
+    <div class="feedback-box" id="feedback-area">
+      <div class="feedback-header">
+        <h2>📝 Formulário de Validação do Mentor</h2>
+        <p>Selecione seu nome abaixo, preencha suas considerações e clique em <strong>Enviar no WhatsApp</strong>. Suas respostas ficam salvas no navegador e não são perdidas se você fechar a tela.</p>
+      </div>
+
+      <!-- Seletor de Mentor -->
+      <label style="font-size: 0.9rem; font-weight: 700; color: #A1A1AA; margin-bottom: 8px; display: block;">QUEM ESTÁ RESPONDENDO?</label>
+      <div class="mentor-selector">
+        <div class="mentor-btn active" onclick="selectMentor('Gustavo Freitas')">Gustavo Freitas</div>
+        <div class="mentor-btn" onclick="selectMentor('Gimael Jr.')">Gimael Jr.</div>
+        <div class="mentor-btn" onclick="selectMentor('Luciano Cokado')">Luciano Cokado</div>
+      </div>
+
+      <div class="save-status">
+        <span>💾</span> <span id="save-indicator">Salvamento automático ativo (armazenado no navegador)</span>
+      </div>
+
+      <form id="mentorForm" onsubmit="event.preventDefault();">
+        
+        <div class="form-group">
+          <label>
+            1. Formato dos Encontros & Carga Horária
+            <span class="hint">Quantas aulas ao vivo no Zoom você sugere para a sua parte? Ex: 2 encontros de 1h30 focados em análise de tela? O que você acha viável na sua agenda?</span>
+          </label>
+          <textarea class="form-control" id="resp_formato" placeholder="Digite sua visão sobre os encontros e horários..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>
+            2. O que você topa entregar como Transformação Prática?
+            <span class="hint">Qual conteúdo, planilha, modelo ou processo você vai colocar na mesa para garantir que o aluno destrave o resultado dele no Starter?</span>
+          </label>
+          <textarea class="form-control" id="resp_entrega" placeholder="Descreva os materiais, entregáveis ou tópicos da sua especialidade..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>
+            3. Opinião sobre o Preço (R$ 3.000,00) & Condição Especial
+            <span class="hint">O que acha do valor de R$ 3.000,00 com abatimento integral para quem subir pro Master? Devemos dar bônus para os primeiros inscritos? Qual bônus?</span>
+          </label>
+          <textarea class="form-control" id="resp_preco" placeholder="Sua opinião sobre a ancoragem, parcelamento ou bônus..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>
+            4. Dúvidas, Riscos ou Sugestões de Mudança no Cronograma
+            <span class="hint">Tem alguma ressalva sobre as datas (08/10 a 16/10), dinâmica com a comunidade ou outro ponto que precisamos alinhar com o Djavan?</span>
+          </label>
+          <textarea class="form-control" id="resp_duvidas" placeholder="Escreva suas dúvidas ou contrapropostas..."></textarea>
+        </div>
+
+        <div class="actions-grid">
+          <button type="button" class="btn btn-whatsapp" onclick="enviarWhatsApp()">
+            📲 Enviar Respostas pelo WhatsApp
+          </button>
+          <button type="button" class="btn btn-copy" onclick="copiarRelatorio()">
+            📋 Copiar Resumo em Texto
+          </button>
+        </div>
+
+      </form>
+    </div>
+
+  </div>
+
+  <div class="toast" id="toast">Copiado com sucesso!</div>
+
+  <script>
+    let currentMentor = 'Gustavo Freitas';
+    const DJAVAN_PHONE = '5511999999999'; // Número do Djavan configurável
+
+    function selectMentor(name) {
+      currentMentor = name;
+      document.querySelectorAll('.mentor-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.innerText.trim() === name);
+      });
+      loadData();
+    }
+
+    function getKey(field) {
+      return `mythos_starter_${currentMentor}_${field}`;
+    }
+
+    function saveData() {
+      const formato = document.getElementById('resp_formato').value;
+      const entrega = document.getElementById('resp_entrega').value;
+      const preco = document.getElementById('resp_preco').value;
+      const duvidas = document.getElementById('resp_duvidas').value;
+
+      localStorage.setItem(getKey('formato'), formato);
+      localStorage.setItem(getKey('entrega'), entrega);
+      localStorage.setItem(getKey('preco'), preco);
+      localStorage.setItem(getKey('duvidas'), duvidas);
+
+      const ind = document.getElementById('save-indicator');
+      ind.innerText = `Salvo às ${new Date().toLocaleTimeString()} para ${currentMentor}`;
+    }
+
+    function loadData() {
+      document.getElementById('resp_formato').value = localStorage.getItem(getKey('formato')) || '';
+      document.getElementById('resp_entrega').value = localStorage.getItem(getKey('entrega')) || '';
+      document.getElementById('resp_preco').value = localStorage.getItem(getKey('preco')) || '';
+      document.getElementById('resp_duvidas').value = localStorage.getItem(getKey('duvidas')) || '';
+
+      const ind = document.getElementById('save-indicator');
+      ind.innerText = `Dados carregados para ${currentMentor}`;
+    }
+
+    // Auto-save listeners
+    ['resp_formato', 'resp_entrega', 'resp_preco', 'resp_duvidas'].forEach(id => {
+      document.getElementById(id).addEventListener('input', saveData);
+    });
+
+    function gerarTextoRelatorio() {
+      const formato = document.getElementById('resp_formato').value || 'Não informado';
+      const entrega = document.getElementById('resp_entrega').value || 'Não informado';
+      const preco = document.getElementById('resp_preco').value || 'Não informado';
+      const duvidas = document.getElementById('resp_duvidas').value || 'Nenhuma dúvida listada';
+
+      return `*📋 RESPOSTAS DO MENTOR: ${currentMentor.toUpperCase()}*\n` +
+             `*PRODUTO:* Starter Mythos (R$ 3.000,00)\n` +
+             `*DATA:* ${new Date().toLocaleDateString()} às ${new Date().toLocaleTimeString()}\n\n` +
+             `*1. Formato dos Encontros:*\n${formato}\n\n` +
+             `*2. Entregas & Transformação:*\n${entrega}\n\n` +
+             `*3. Preço & Bônus:*\n${preco}\n\n` +
+             `*4. Dúvidas & Sugestões:*\n${duvidas}\n\n` +
+             `--------------------------------\n` +
+             `_Enviado através do Painel de Lançamento PubX_`;
+    }
+
+    function enviarWhatsApp() {
+      saveData();
+      const texto = gerarTextoRelatorio();
+      const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(texto)}`;
+      window.open(url, '_blank');
+    }
+
+    function copiarRelatorio() {
+      saveData();
+      const texto = gerarTextoRelatorio();
+      navigator.clipboard.writeText(texto).then(() => {
+        showToast('Resumo copiado para a área de transferência!');
+      }).catch(err => {
+        showToast('Falha ao copiar. Selecione e copie manualmente.');
+      });
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.innerText = msg;
+      toast.style.display = 'block';
+      setTimeout(() => {
+        toast.style.display = 'none';
+      }, 3000);
+    }
+
+    // Init
+    window.addEventListener('DOMContentLoaded', () => {
+      loadData();
+    });
+  </script>
+</body>
+</html>
