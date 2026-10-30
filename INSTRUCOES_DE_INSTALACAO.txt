@@ -1,0 +1,87 @@
+========================================================================
+⚡ BASE DE CONHECIMENTO • CAFÉ COM PUBLISHER (PUBX 2026)
+INSTRUÇÕES RÁPIDAS DE INSTALAÇÃO NO SEU SERVIDOR / DOMÍNIO
+========================================================================
+
+Parabéns! Você tem em mãos a estrutura oficial do Buscador Inteligente
+da Base de Conhecimento do Café com Publisher.
+
+O sistema é 100% autônomo (Single Page Application em React + Motor BM25),
+ou seja, ele roda DIRETO no navegador do seu visitante com velocidade máxima.
+
+------------------------------------------------------------------------
+📌 O QUE ESTÁ INCLUSO NESTE PACOTE:
+------------------------------------------------------------------------
+1. index.html                     -> A página de entrada do buscador
+2. pasta "assets/"                -> Contém o cérebro (JavaScript) e o visual (CSS)
+3. INSTRUCOES_DE_INSTALACAO.txt   -> Este manual passo a passo
+
+------------------------------------------------------------------------
+🚀 PASSO A PASSO PARA SUBIR NO SEU SITE (Exemplo: seudominio.com.br/busca):
+------------------------------------------------------------------------
+
+PASSO 1:
+Acesse o gerenciador de arquivos da sua hospedagem (cPanel, Hostinger,
+Hostgator, Locaweb, etc.) ou conecte-se via FTP (FileZilla).
+
+PASSO 2:
+Abra a pasta pública do seu site (geralmente chamada de "public_html",
+"www" ou "htdocs").
+
+PASSO 3:
+Crie uma pasta com o nome que desejar para a URL.
+Por exemplo, crie uma pasta chamada: busca
+(Assim a URL do seu buscador será: https://seudominio.com.br/busca/)
+
+PASSO 4:
+Envie os arquivos deste pacote para dentro dessa pasta "/busca".
+A estrutura DENTRO da pasta "/busca" DEVE ficar exatamente assim:
+
+  /busca/
+  ├── index.html
+  └── assets/
+      ├── index-DOhKeCa2.js
+      └── index-DxN_h6Uq.css
+
+PASSO 5:
+Pronto! Abra seu navegador e acerte a URL:
+👉 https://seudominio.com.br/busca/
+
+O buscador já estará funcionando 100%!
+
+------------------------------------------------------------------------
+🔄 COMO FUNCIONA A ATUALIZAÇÃO AUTOMÁTICA DE NOVOS EPISÓDIOS?
+------------------------------------------------------------------------
+Você NÃO precisa atualizar arquivos manualmente e nem baixar um novo ZIP
+quando novos episódios do Café com Publisher forem ao ar!
+
+O sistema possui uma engrenagem de sincronização automática com a nossa
+central na nuvem (GitHub Pages / CDN oficial). Toda vez que um novo episódio
+for gravado e catalogado pela equipe PubX:
+
+1. O buscador do seu site se conecta de forma invisível e segura à central;
+2. Se houver novos episódios ou minutagens, ele atualiza a lista na hora;
+3. O visitante sempre pesquisa no acervo mais completo e atualizado;
+4. Caso o visitante esteja sem internet no momento da busca, o sistema
+   usa a base local embutida de contingência (zero erro, zero tela branca).
+
+------------------------------------------------------------------------
+❓ PERGUNTAS FREQUENTES (FAQ):
+------------------------------------------------------------------------
+• Preciso de banco de dados MySQL?
+  NÃO. O banco de dados é processado diretamente pelo motor BM25 na memória.
+
+• Preciso de PHP, Python ou Node.js rodando no servidor?
+  NÃO. Funciona em qualquer hospedagem estática ou compartilhada comum.
+
+• Funciona em sites que usam WordPress?
+  SIM! Basta criar a pasta "/busca" dentro da pasta raiz do seu WordPress
+  (no mesmo lugar onde ficam wp-content e wp-admin). O WordPress não
+  interfere em subpastas estáticas.
+
+• Posso instalar em um subdomínio (ex: busca.seudominio.com.br)?
+  SIM! Basta colocar os arquivos direto na pasta raiz do subdomínio.
+
+========================================================================
+Dúvidas ou suporte? Entre em contato com a equipe oficial PubX.
+========================================================================
